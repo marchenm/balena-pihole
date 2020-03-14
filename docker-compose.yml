@@ -3,7 +3,6 @@ version: '2.1'
 
 services:
   pihole:
-    container_name: pihole
     build: ./pihole
     dns:
       - 127.0.0.1
@@ -20,7 +19,6 @@ services:
       - dnsmasq_config:/etc/dnsmasq.d/
     network_mode: host
   unbound:
-    container_name: unbound
     image: klutchell/unbound:armv7hf
     restart: unless-stopped
     ports:
