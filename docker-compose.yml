@@ -28,6 +28,11 @@ services:
     ports:
       - 5053:5053/tcp
       - 5053:5053/udp
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    labels:
+      io.balena.features.balena-socket: 'true'
 
 volumes:
   pihole_config:
