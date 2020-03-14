@@ -4,35 +4,28 @@ version: '2.1'
 services:
   pihole:
     container_name: pihole
-    image: pihole/pihole:latest
+    build: ./pihole
     dns:
       - 127.0.0.1
       - 1.1.1.1
     restart: unless-stopped
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 67:67/udp
-      - 80:80/tcp
-      - 443:443/tcp
     environment:
       DNS1: 127.0.0.1#5053
-      IPv6: no
+      DNS2: 127.0.0.1#5053
+      IPv6: false
+      INTERFACE: eth0
+      DNSMASQ_LISTENING: eth0
     volumes:
       - pihole_config:/etc/pihole/
       - dnsmasq_config:/etc/dnsmasq.d/
+    network_mode: host
   unbound:
     container_name: unbound
     image: klutchell/unbound:armv7hf
     restart: unless-stopped
     ports:
-      - 5053:5053/tcp
-      - 5053:5053/udp
-  watchtower:
-    container_name: watchtower
-    image: containrrr/watchtower
-    labels:
-      io.balena.features.balena-socket: 'true'
+      - 5053:53/tcp
+      - 5053:53/udp
 
 volumes:
   pihole_config:
