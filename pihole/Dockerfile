@@ -1,4 +1,4 @@
-FROM pihole/pihole:v5.2.1-armhf-stretch
+FROM pihole/pihole:v5.3.4-armhf-buster
 RUN sed -i '/$AUTHORIZED_HOSTNAMES = array(/ a "balena-devices.com",' /var/www/html/admin/scripts/pi-hole/php/auth.php
 
 # https://serverfault.com/a/817791
