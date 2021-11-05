@@ -1,0 +1,13 @@
+on: [pull_request]
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Commit Lint
+        uses: wagoid/commitlint-github-action@v3
+        with:
+          helpURL: https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular

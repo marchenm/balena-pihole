@@ -18,7 +18,7 @@ services:
       - dnsmasq_config:/etc/dnsmasq.d/
     network_mode: host
   unbound:
-    image: klutchell/unbound:armv7hf
+    image: klutchell/unbound:latest
     restart: unless-stopped
     ports:
       - 5053:53/tcp
