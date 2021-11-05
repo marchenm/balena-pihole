@@ -9,8 +9,7 @@ services:
       - 1.1.1.1
     restart: unless-stopped
     environment:
-      DNS1: 127.0.0.1#5053
-      DNS2: 127.0.0.1#5053
+      PIHOLE_DNS_: 127.0.0.1#5053
       IPv6: false
       INTERFACE: eth0
       DNSMASQ_LISTENING: eth0
