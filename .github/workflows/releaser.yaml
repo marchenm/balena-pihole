@@ -12,10 +12,13 @@ jobs:
       - name: semantic release
         uses: cycjimmy/semantic-release-action@v2
         with:
-          semantic_version: 17
+          semantic_version: 18
           extra_plugins: |
             @semantic-release/changelog
+            @semantic-release/commit-analyzer
+            @commitlint/config-angular
             @semantic-release/git
+            @semantic-release/release-notes-generator
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   balenapush:
